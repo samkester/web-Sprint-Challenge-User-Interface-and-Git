@@ -80,6 +80,8 @@ p {
     margin: 0 auto;
 }
 
+/* header */
+
 header{
     width: 100%;
 }
@@ -107,6 +109,8 @@ header .jumbo-img{
     margin: 5% 0% 2.5%;
 }
 
+/* top content */
+
 .top-content {
     display: flex;
     flex-wrap: wrap;
@@ -121,7 +125,11 @@ header .jumbo-img{
     padding-bottom: 20px;  
 }
 
+/* middle content */
+
 .middle-content {
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 20px;
     border-bottom: 1px dashed black;
 }
@@ -130,6 +138,22 @@ header .jumbo-img{
     padding: 0 2%;
     margin-bottom: 0;
 }
+
+.article-box {
+    width: 47%;
+    padding: 1.5% 0%;
+    margin: 1.5%;
+    border-bottom: 1px red solid;
+    /*display: flex;*/
+    flex-flow: column;
+}
+
+.article-box img{
+    width: 100%;
+    max-height: 40vw; /* just in case someone puts an unreasonably tall image in by accident */
+}
+
+/* colored boxes */
 
 .middle-content .boxes {
     display: flex;
@@ -188,6 +212,8 @@ header .jumbo-img{
     background: dodgerblue;
 }
 
+/* bottom content */
+
 .bottom-content {
     display: flex;
     margin: 0 2% 20px;
@@ -201,6 +227,8 @@ header .jumbo-img{
 .bottom-content .text-container:last-child {
     padding-right: 0;
 }
+
+/* footer */
 
 footer {
     width: 100%;
