@@ -33,23 +33,37 @@ Demonstrate your understanding of this week's concepts by answering the followin
 Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead
 
 1. If you were to describe semantic HTML to the next cohort of students, what would you say?
+Semantic HTML tags allow your web page to describe itself in more detail to programs such as screen readers and search engines. Using semantic HTML tags gives pieces of your website labels that describe their purpose and function, making it easier for those programs to navigate.
+
+Semantic HTML tags also act as structural tags, allowing them to play a role in laying out and styling your page, but if you need additional containers for styling, they should be non-semantic tags to avoid confusion.
 
 2. Name two big differences between ```display: block;``` and ```display: inline;```.
+By default, block objects take up their own row, while inline objects sit in the same row as text or other inline objects.
+Block objects have full access to the "box model" - size, padding, margin, and border - while inline objects can only have a few of these, such as horizontal margins.
 
 3. What are the 4 areas of the box model?
+From inside to outside:
+Content (width and height) - the inner part of the box where text or other objects contained in this object are drawn.
+Padding - blank space covered by the object's background
+Border
+Margin - blank space not covered by the object's background
 
 4. While using flexbox, what axis does the following property work on: ```align-items: center```?
+The cross axis - horizontal when using flex-direction: column; vertical with flex-direction: row;
 
 5. Explain why git is valuable to a team of developers.
+Backup: an offsite copy of the code allows it to be backed up if anything happens to your computer.
+Versioning: keeping old versions of the code allows it to be reverted if a change breaks existing functions.
+Branching: giving each member of the team (or small group) their own branch allows them to work simultaneously without interfering with one another. The merging UI allows the team leader to quickly see whether the branches will work smoothly together or whether they need to be adjusted.
 
 You are expected to be able to answer all these questions. Your responses contribute to your Sprint Challenge grade. Skipping this section *will* prevent you from passing this challenge.
 
 ## Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your Team Lead as collaborator on Github.
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!).
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [X] Create a forked copy of this project.
+- [X] Add your Team Lead as collaborator on Github.
+- [X] Clone your OWN version of the repository (Not Lambda's by mistake!).
+- [X] Create a new branch: git checkout -b `<firstName-lastName>`.
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
 - [ ] Push commits: git push -u origin `<firstName-lastName>`.
  
