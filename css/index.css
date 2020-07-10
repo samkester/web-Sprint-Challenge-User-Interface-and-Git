@@ -23,6 +23,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -51,6 +52,14 @@ table {
     box-sizing: border-box;
 }
 
+/* reset link styles for different states */
+a, a:visited, a:hover, a:active{
+    color:inherit;
+    text-decoration: none;
+}
+
+/* begin project-specific CSS */
+
 html, body {
     height: 100%;
     font-family: 'Roboto', sans-serif;
@@ -71,59 +80,33 @@ p {
     margin: 0 auto;
 }
 
-.top-content {
+/* header + footer */
+
+header{
+    width: 100%;
+}
+
+header .header-row{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
-    border-bottom: 1px dashed black;
+    align-items: flex-end;
+    margin: 2.5% 0% 0%;
 }
 
-.top-content .text-container {
-    width: 48%;
-    padding: 0 1%;
-    padding-bottom: 20px;  
-}
-
-.middle-content {
-    margin-bottom: 20px;
-    border-bottom: 1px dashed black;
-}
-
-.middle-content h2 {
-    padding: 0 2%;
-    margin-bottom: 0;
-}
-
-.middle-content .boxes {
+header nav{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.middle-content .boxes .box {
-    width: 12.5%;
-    height: 100px;
-    background: black;
-    margin: 20px 2.5%;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.bottom-content {
-    display: flex;
-    margin: 0 2% 20px;
     justify-content: space-around;
+    width: 100%; /* 100% width + flex-shrink + a flex-wrap:nowrap container = this will scale to fit the available space */
+    flex-shrink: 1;
+    font-size: 0.9rem;
 }
 
-.bottom-content .text-container {
-    padding-right: 4%;
+header .icon-img{
+    flex-shrink: 0; /* to avoid scaling with the nav */
 }
 
-.bottom-content .text-container:last-child {
-    padding-right: 0;
+header .jumbo-img{
+    width: 100%;
+    margin: 5% 0% 2.5%;
 }
 
 footer {
@@ -138,9 +121,131 @@ footer nav {
     align-items: center;
     padding: 20px 2%;
     font-size: 14px;
+    color: white;
 }
 
-footer nav a {
-    color: white;
-    text-decoration: none;
+/* content wrappers */
+
+.top-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
 }
+
+.top-content .text-container {
+    width: 48%;
+    padding: 0 1% 20px;
+}
+
+.top-content .text-container.fullwidth {
+    width: 98%;
+    padding-left: 1.5%;
+    padding-right: 1.5%; /* must be explicit to preserve the vertical padding this shares with the above */
+}
+
+.middle-content {
+    margin-bottom: 20px;
+}
+
+.middle-content h2 {
+    padding: 0 2%;
+    margin-bottom: 0;
+}
+
+.bottom-content {
+    width: 100%;
+    display: flex;
+    margin: 0 2% 20px;
+    justify-content: space-around;
+}
+
+.about-page .bottom-content{
+    padding-left: 1%;
+    padding-bottom: 2.5%;
+}
+
+.bottom-content .text-container {
+    padding-right: 4%;
+}
+
+/* the two uses of .text-container can almost be reconciled into a single .text-container{} rule, 
+     but the design calls for different amounts of space in between columns on the top and bottom */
+
+/* article container */
+
+.article-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5%;
+}
+
+/* article boxes are designed to wrap in case more articles are added to the page */
+
+.article-box {
+    width: 46%;
+    margin: 1% 2% 2%;
+    padding-bottom: 1%;
+}
+
+.article-box img{
+    width: 100%;
+    max-height: 40vw; /* in case someone puts an unreasonably tall image in by accident */
+}
+
+.article-box h2{
+    padding: 2.5% 0;
+}
+
+.article-box p{
+    padding: 2.5% 0%;
+}
+
+.article-box .learn-button{
+    display: inline-block;
+    margin: 2.5% 0%;
+    padding: 2.5% 6%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+/* colored boxes */
+
+/* originally this block explicitly referred to .middle-content, but we could reuse it in another part of the site with a more descriptive name */
+
+.color-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.color-container .box {
+    width: 12.5%;
+    height: 100px;
+    background: black;
+    margin: 20px 2.5%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-container .color-1{    background: teal;         } /* this format reduces the space taken up by the block, */
+.color-container .color-2{    background: gold;         } /*  and makes it easier to compare colors between styles */
+.color-container .color-3{    background: cadetblue;    }
+.color-container .color-4{    background: coral;        }
+.color-container .color-5{    background: crimson;      }
+.color-container .color-6{    background: forestgreen;  }
+.color-container .color-7{    background: darkorchid;   }
+.color-container .color-8{    background: hotpink;      }
+.color-container .color-9{    background: indigo;       }
+.color-container .color-10{   background: dodgerblue;   }
+
+/* modular styles */
+
+.dashes-under{
+    border-bottom: 1px dashed black;
+}
+
+/* changing the dashed border to its own class allows it to be used differently on the two pages,
+e.g., on the middle-content section in index.html and on the article-boxes in about.html */
