@@ -24,12 +24,6 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-/* reset link styles for different states */
-a, a:visited, a:hover, a:active{
-    color:inherit;
-    text-decoration: none;
-}
-
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -58,6 +52,12 @@ table {
     box-sizing: border-box;
 }
 
+/* reset link styles for different states */
+a, a:visited, a:hover, a:active{
+    color:inherit;
+    text-decoration: none;
+}
+
 /* begin project-specific CSS */
 
 html, body {
@@ -80,7 +80,7 @@ p {
     margin: 0 auto;
 }
 
-/* header */
+/* header + footer */
 
 header{
     width: 100%;
@@ -92,16 +92,16 @@ header .header-row{
     margin: 2.5% 0% 0%;
 }
 
-header .icon-img{
-    flex-shrink: 0;
-}
-
 header nav{
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 100%; /* 100% width + flex-shrink + a flex-wrap:nowrap container = this will scale to fit the available space */
     flex-shrink: 1;
     font-size: 0.9rem;
+}
+
+header .icon-img{
+    flex-shrink: 0; /* to avoid scaling with the nav */
 }
 
 header .jumbo-img{
@@ -109,17 +109,28 @@ header .jumbo-img{
     margin: 5% 0% 2.5%;
 }
 
-/* top content */
+footer {
+    width: 100%;
+    background: black;
+}
+
+footer nav {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 2%;
+    font-size: 14px;
+    color: white;
+}
+
+/* content wrappers */
 
 .top-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-bottom: 20px;
-}
-
-.dashes-under{
-    border-bottom: 1px dashed black;
 }
 
 .top-content .text-container {
@@ -130,10 +141,8 @@ header .jumbo-img{
 .top-content .text-container.fullwidth {
     width: 98%;
     padding-left: 1.5%;
-    padding-right: 1.5%; /* must be explicit to preserve the vertical padding this shares with normal .text-container */
+    padding-right: 1.5%; /* must be explicit to preserve the vertical padding this shares with the above */
 }
-
-/* middle content */
 
 .middle-content {
     margin-bottom: 20px;
@@ -144,23 +153,44 @@ header .jumbo-img{
     margin-bottom: 0;
 }
 
+.bottom-content {
+    width: 100%;
+    display: flex;
+    margin: 0 2% 20px;
+    justify-content: space-around;
+}
+
+.about-page .bottom-content{
+    padding-left: 1%;
+    padding-bottom: 2.5%;
+}
+
+.bottom-content .text-container {
+    padding-right: 4%;
+}
+
+/* the two uses of .text-container can almost be reconciled into a single .text-container{} rule, 
+     but the design calls for different amounts of space in between columns on the top and bottom */
+
+/* article container */
+
 .article-container{
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 5%;
 }
 
+/* article boxes are designed to wrap in case more articles are added to the page */
+
 .article-box {
     width: 46%;
-    /*padding: 2% 0%;*/
     margin: 1% 2% 2%;
     padding-bottom: 1%;
-    /*margin-bottom: 20px;*/
 }
 
 .article-box img{
     width: 100%;
-    max-height: 40vw; /* just in case someone puts an unreasonably tall image in by accident */
+    max-height: 40vw; /* in case someone puts an unreasonably tall image in by accident */
 }
 
 .article-box h2{
@@ -181,13 +211,15 @@ header .jumbo-img{
 
 /* colored boxes */
 
-.middle-content .boxes {
+/* originally this block explicitly referred to .middle-content, but we could reuse it in another part of the site with a more descriptive name */
+
+.color-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.middle-content .boxes .box {
+.color-container .box {
     width: 12.5%;
     height: 100px;
     background: black;
@@ -198,75 +230,22 @@ header .jumbo-img{
     justify-content: center;
 }
 
-.middle-content .boxes .box-1{
-    background: teal;
+.color-container .color-1{    background: teal;         } /* this format reduces the space taken up by the block, */
+.color-container .color-2{    background: gold;         } /*  and makes it easier to compare colors between styles */
+.color-container .color-3{    background: cadetblue;    }
+.color-container .color-4{    background: coral;        }
+.color-container .color-5{    background: crimson;      }
+.color-container .color-6{    background: forestgreen;  }
+.color-container .color-7{    background: darkorchid;   }
+.color-container .color-8{    background: hotpink;      }
+.color-container .color-9{    background: indigo;       }
+.color-container .color-10{   background: dodgerblue;   }
+
+/* modular styles */
+
+.dashes-under{
+    border-bottom: 1px dashed black;
 }
 
-.middle-content .boxes .box-2{
-    background: gold;
-}
-
-.middle-content .boxes .box-3{
-    background: cadetblue;
-}
-
-.middle-content .boxes .box-4{
-    background: coral;
-}
-
-.middle-content .boxes .box-5{
-    background: crimson;
-}
-
-.middle-content .boxes .box-6{
-    background: forestgreen;
-}
-
-.middle-content .boxes .box-7{
-    background: darkorchid;
-}
-
-.middle-content .boxes .box-8{
-    background: hotpink;
-}
-
-.middle-content .boxes .box-9{
-    background: indigo;
-}
-
-.middle-content .boxes .box-10{
-    background: dodgerblue;
-}
-
-/* bottom content */
-
-.bottom-content {
-    display: flex;
-    margin: 0 2% 20px;
-    justify-content: space-around;
-}
-
-.bottom-content .text-container {
-    padding-right: 4%;
-}
-
-.bottom-content .text-container:last-child {
-    padding-right: 0;
-}
-
-/* footer */
-
-footer {
-    width: 100%;
-    background: black;
-}
-
-footer nav {
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 2%;
-    font-size: 14px;
-    color: white;
-}
+/* changing the dashed border to its own class allows it to be used differently on the two pages,
+e.g., on the middle-content section in index.html and on the article-boxes in about.html */
